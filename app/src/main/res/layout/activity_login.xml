@@ -4,43 +4,68 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/etUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="157dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="username"
-        tools:layout_editor_absoluteX="95dp"
-        tools:layout_editor_absoluteY="66dp" />
 
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="226dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="password"
-        tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="136dp" />
 
-    <Button
-        android:id="@+id/btnLogin"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:src="@drawable/ig_logo" />
+
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_bg"
+            android:baselineAligned="false"
+            android:hint="Phone number, email or username"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_bg"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:text="Log in"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#3897F0"
+            android:padding="16dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+
+    </LinearLayout>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="139dp"
-        android:layout_marginTop="295dp"
-        android:text="Log in"
-        tools:layout_editor_absoluteX="214dp"
-        tools:layout_editor_absoluteY="219dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="131dp"
+        android:layout_marginBottom="-505dp"
+        android:text="Forgot your password?" />
+
+
 </RelativeLayout>

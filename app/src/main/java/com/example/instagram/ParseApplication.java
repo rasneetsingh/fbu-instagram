@@ -3,12 +3,16 @@ package com.example.instagram;
 import android.app.Application;
 
 import com.parse.Parse;
+import com.parse.ParseObject;
 
 
 public class ParseApplication extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
+
+        //register your parse models
+        ParseObject.registerSubclass(Post.class);
 
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("2LZiNp0BqCP4tT5yd3TH1PQcNflLrkJvay28B6fj")
