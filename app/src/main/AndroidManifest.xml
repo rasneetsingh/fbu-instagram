@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <queries>
+
         <!-- Camera -->
         <intent>
             <action android:name="android.media.action.IMAGE_CAPTURE" />
@@ -34,6 +35,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/fileprovider" />
         </provider>
+        <activity
+            android:name=".FeedActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />

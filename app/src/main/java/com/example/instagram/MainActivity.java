@@ -3,6 +3,7 @@ package com.example.instagram;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     public Button btnSubmit;
     private File photoFile;
     public String photoFileName="photo.jpg";
+    public Button btnFeed;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         ivPostImage = findViewById(R.id.ivPostImage);
         btnSubmit = findViewById(R.id.btnSubmit);
+        btnFeed = findViewById(R.id.btnFeed);
+
+        btnFeed.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                goFeedActivity();
+            }
+        });
 
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +85,14 @@ public class MainActivity extends AppCompatActivity {
                 savePost(description, currentUser, photoFile);
             }
         });
+
+    }
+
+    private void goFeedActivity() {
+        Intent i = new Intent(this, FeedActivity.class);
+        startActivity(i);
+        finish();
+
 
     }
 

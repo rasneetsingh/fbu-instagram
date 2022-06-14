@@ -23,7 +23,7 @@ public class Post extends ParseObject{
 
     }
 
-    public ParseFile getImage(ParseFile parseFile){
+    public ParseFile getImage(){
         return getParseFile(KEY_IMAGE);
 
     }
@@ -39,6 +39,7 @@ public class Post extends ParseObject{
     public void setUser(ParseUser user){
         put(KEY_USER, user);
     }
+
 
 
 }
