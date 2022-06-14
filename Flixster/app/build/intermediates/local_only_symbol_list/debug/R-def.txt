@@ -1,0 +1,28 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable movie_placeholder
+drawable placeholder
+id button
+id ivPoster
+id rbVoteAverage
+id rvMovies
+id tvOverview
+id tvTitle
+layout activity_main
+layout activity_mobile_details_acitivity
+layout item_movie
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Theme.Flixster
+xml backup_rules
+xml data_extraction_rules
