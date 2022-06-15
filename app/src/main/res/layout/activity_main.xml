@@ -10,16 +10,17 @@
 
     <EditText
         android:id="@+id/etDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="description" />
 
-    <Button
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:ems="10"
+        android:hint="What's on your mind?" />
+
+    <ImageView
         android:id="@+id/btnCaptureImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Take picture" />
+        android:src="@drawable/ic_baseline_camera_alt_24"/>
 
 
     <ImageView
@@ -33,14 +34,25 @@
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit" />
+        android:text="Submit"
+        android:backgroundTint="#3897F0"
+        />
 
 
     <Button
         android:id="@+id/btnFeed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="View Feed" />
+        android:text="View Feed"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="#3897F0"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnlogout"
+        android:text="LogOut"
+        android:backgroundTint="#3897F0"/>
 
 
 

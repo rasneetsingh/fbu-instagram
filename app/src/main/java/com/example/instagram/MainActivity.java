@@ -34,12 +34,13 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG ="MainActivity";
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     public EditText etDescription;
-    public Button btnCaptureImage;
+    public ImageView btnCaptureImage;
     public ImageView ivPostImage;
     public Button btnSubmit;
     private File photoFile;
     public String photoFileName="photo.jpg";
     public Button btnFeed;
+    Button logoutbtn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,6 +52,16 @@ public class MainActivity extends AppCompatActivity {
         ivPostImage = findViewById(R.id.ivPostImage);
         btnSubmit = findViewById(R.id.btnSubmit);
         btnFeed = findViewById(R.id.btnFeed);
+        logoutbtn = findViewById(R.id.btnlogout);
+
+        logoutbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseUser.logOut();
+                ParseUser currentUser = ParseUser.getCurrentUser();
+                finish();
+            }
+        });
 
         btnFeed.setOnClickListener(new View.OnClickListener(){
             @Override
