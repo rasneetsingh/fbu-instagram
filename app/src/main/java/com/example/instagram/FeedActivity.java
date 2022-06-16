@@ -2,6 +2,7 @@ package com.example.instagram;
 
 import static android.content.ContentValues.TAG;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,10 +13,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -32,10 +35,6 @@ public class FeedActivity extends AppCompatActivity {
     Button btnpost;
 
 
-
-
-
-
     @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,19 +44,26 @@ public class FeedActivity extends AppCompatActivity {
 
         rvPosts = findViewById(R.id.rvPosts);
 
-        btnpost= findViewById(R.id.btnPost);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-
-
-
-        btnpost.setOnClickListener(new View.OnClickListener() {
+        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                goMainActivity();
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.camera:
+                        goMainActivity();
+                        // do something here
+
+                    //case R.id.action_schedules:
+                        // do something here
+                        //return true;
+                    //case R.id.action_music:
+                        // do something here
+                        //return true;
+                    default: return true;
+                }
             }
         });
-
-
 
         swipeLayout = findViewById(R.id.swipeContainer);
         // Adding Listener

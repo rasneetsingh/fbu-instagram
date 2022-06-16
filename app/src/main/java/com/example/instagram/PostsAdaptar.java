@@ -25,6 +25,7 @@ public class PostsAdaptar extends RecyclerView.Adapter<PostsAdaptar.ViewHolder> 
     private TextView tvUsername;
     private ImageView ivImage;
     private TextView tvDescription;
+    private ImageView ivprofilepic;
 
 
     public PostsAdaptar(Context context, List<Post> posts) {
@@ -57,6 +58,7 @@ public class PostsAdaptar extends RecyclerView.Adapter<PostsAdaptar.ViewHolder> 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            ivprofilepic= itemView.findViewById(R.id.ivprofilepic);
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
@@ -68,10 +70,17 @@ public class PostsAdaptar extends RecyclerView.Adapter<PostsAdaptar.ViewHolder> 
             // Bind the post data to the view elements
             tvDescription.setText(post.getDescription());
             tvUsername.setText(post.getUser().getUsername());
+            ParseFile ivProfilepic = post.getUser().getParseFile("profilepic");
             ParseFile image = post.getImage();
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
+
+            if (ivProfilepic != null) {
+                Glide.with(context).load(ivProfilepic.getUrl()).into(ivprofilepic);
+            }
+
+
 
         }
         public void clear() {
