@@ -78,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
         //queryPosts();
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -103,8 +105,6 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, FeedActivity.class);
         startActivity(i);
         finish();
-
-
     }
 
     private void launchCamera() {
@@ -125,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
             //noinspection deprecation
             startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
         }
-
 
     }
 

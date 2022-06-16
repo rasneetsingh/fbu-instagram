@@ -40,6 +40,10 @@
         </provider>
 
         <activity
+            android:name=".ComposeComment"
+            android:exported="false" />
+
+        <activity
             android:name=".FeedActivity"
             android:exported="true" />
         <activity

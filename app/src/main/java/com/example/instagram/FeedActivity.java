@@ -7,9 +7,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -23,13 +27,16 @@ public class FeedActivity extends AppCompatActivity {
     private SwipeRefreshLayout swipeLayout;
 
     private RecyclerView rvPosts;
-    protected PostsAdapter adapter;
+    protected PostsAdaptar adapter;
     protected List<Post> allPosts;
+    Button btnpost;
 
 
 
 
 
+
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +44,20 @@ public class FeedActivity extends AppCompatActivity {
 
 
         rvPosts = findViewById(R.id.rvPosts);
+
+        btnpost= findViewById(R.id.btnPost);
+
+
+
+
+        btnpost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goMainActivity();
+            }
+        });
+
+
 
         swipeLayout = findViewById(R.id.swipeContainer);
         // Adding Listener
@@ -68,7 +89,7 @@ public class FeedActivity extends AppCompatActivity {
 
         // initialize the array that will hold posts and create a PostsAdapter
         allPosts = new ArrayList<>();
-        adapter = new PostsAdapter(this, allPosts);
+        adapter = new PostsAdaptar(this, allPosts);
 
         // set the adapter on the recycler view
         rvPosts.setAdapter(adapter);
@@ -76,6 +97,14 @@ public class FeedActivity extends AppCompatActivity {
         rvPosts.setLayoutManager(new LinearLayoutManager(this));
         // query posts from Parstagram
         queryPosts();
+
+    }
+
+    private void goMainActivity() {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        finish();
+
 
     }
 

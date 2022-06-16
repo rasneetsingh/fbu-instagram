@@ -23,13 +23,15 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         if(ParseUser.getCurrentUser() != null){
-            goMainActivity();
+            goFeedActivity();
         }
 
         etUsername = findViewById(R.id.etUsername);
@@ -61,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 //todonavigate to the main activity if the user has signed in properly
 
-                goMainActivity();
+                goFeedActivity();
                 Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_SHORT).show();
 
 
@@ -70,8 +72,8 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
-    private void goMainActivity(){
-        Intent i = new Intent(this, MainActivity.class);
+    private void goFeedActivity(){
+        Intent i = new Intent(this, FeedActivity.class);
         startActivity(i);
         finish();
 
