@@ -11,33 +11,33 @@ Time spent: **30** hours spent in total
 The following **required** functionality is completed:
 
 - [x] User sees app icon in home screen.
-- [ ] User can sign up to create a new account using Parse authentication
-- [ ] User can log in to their account
-- [ ] The current signed in user is persisted across app restarts
-- [ ] User can log out of their account
-- [ ] User can take a photo, add a caption, and post it to "Instagram"
-- [ ] User can view the last 20 posts submitted to "Instagram"
-- [ ] User can pull to refresh the last 20 posts submitted to "Instagram"
-- [ ] User can tap a post to go to a Post Details activity, which includes timestamp and caption.
+- [x] User can sign up to create a new account using Parse authentication
+- [x] User can log in to their account
+- [x] The current signed in user is persisted across app restarts
+- [x] User can log out of their account
+- [x] User can take a photo, add a caption, and post it to "Instagram"
+- [x] User can view the last 20 posts submitted to "Instagram"
+- [x] User can pull to refresh the last 20 posts submitted to "Instagram"
+- [x] User can tap a post to go to a Post Details activity, which includes timestamp and caption.
 
 The following **stretch** features are implemented:
 
-- [ ] Style the login page to look like the real Instagram login page.
-- [ ] Style the feed to look like the real Instagram feed.
+- [x] Style the login page to look like the real Instagram login page.
+- [x] Style the feed to look like the real Instagram feed.
 
-- [ ] User should switch between different tabs using  Bottom Navigation View.
-  - [ ] Feed Tab (to view all posts from all users)
-  - [ ] Capture Tab (to make a new post using the Camera and Photo Gallery)
+- [x] User should switch between different tabs using  Bottom Navigation View.
+  - [x] Feed Tab (to view all posts from all users)
+  - [x] Capture Tab (to make a new post using the Camera and Photo Gallery)
   
 
 - User Profiles:
-  - [ ] Allow the logged in user to add a profile photo
-  - [ ] Display the profile photo with each post
+  - [x] Allow the logged in user to add a profile photo
+  - [x] Display the profile photo with each post
   
   
 
 
-- [ ] User can like a post. 
+- [x] User can like a post. 
 
 The following **additional** features are implemented:
 
