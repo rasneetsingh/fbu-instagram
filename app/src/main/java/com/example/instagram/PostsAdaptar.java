@@ -2,9 +2,12 @@ package com.example.instagram;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,9 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
+import com.parse.ParseUser;
 
 import org.parceler.Parcels;
 
+import java.util.Date;
 import java.util.List;
 
 public class PostsAdaptar extends RecyclerView.Adapter<PostsAdaptar.ViewHolder> {
@@ -26,6 +31,9 @@ public class PostsAdaptar extends RecyclerView.Adapter<PostsAdaptar.ViewHolder> 
     private ImageView ivImage;
     private TextView tvDescription;
     private ImageView ivprofilepic;
+    private ImageView ivlike;
+    private TextView tvCreatedAt;
+    List<String> likeBy;
 
 
     public PostsAdaptar(Context context, List<Post> posts) {
@@ -59,6 +67,7 @@ public class PostsAdaptar extends RecyclerView.Adapter<PostsAdaptar.ViewHolder> 
             super(itemView);
 
             ivprofilepic= itemView.findViewById(R.id.ivprofilepic);
+            tvCreatedAt = itemView.findViewById(R.id.tvCreatedAt);
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
@@ -66,6 +75,38 @@ public class PostsAdaptar extends RecyclerView.Adapter<PostsAdaptar.ViewHolder> 
         }
 
         public void bind(Post post) {
+
+            Date createdAt = post.getCreatedAt();
+            String timeAgo = Post.calculateTimeAgo(createdAt);
+            ivlike= itemView.findViewById(R.id.ig_heart);
+            tvCreatedAt.setText(timeAgo);
+
+
+            ivlike.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    List<String> likeBy = post.getlikedBy();
+                    if(!likeBy.contains(ParseUser.getCurrentUser().getObjectId()))
+                    {
+                        likeBy.add(ParseUser.getCurrentUser().getObjectId());
+                        post.setlikedBy(likeBy);
+                        Drawable newImage = context.getDrawable(R.drawable.ig_heart);
+                        ivlike.setImageDrawable(newImage);
+                        Log.e("PostsAdapter", "like");
+
+                    }
+                    else{
+                        likeBy.remove(ParseUser.getCurrentUser().getObjectId());
+                        post.setlikedBy(likeBy);
+                        Drawable newImage = context.getDrawable(R.drawable.ig_heart_black);
+                        ivlike.setImageDrawable(newImage);
+                        Log.e("PostsAdapter", "unlike");
+                    }
+                    post.saveInBackground();
+
+
+                }
+            });
 
             // Bind the post data to the view elements
             tvDescription.setText(post.getDescription());

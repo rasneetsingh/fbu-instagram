@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,7 +30,8 @@ public class PostDetailsActivity extends AppCompatActivity {
    ImageView ivImage;
    RecyclerView rvComments;
    ImageView igComment;
-    CommentAdapter adapter;
+   CommentAdapter adapter;
+   Button ivback;
 
 
     Post post;
@@ -47,6 +49,7 @@ public class PostDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_details);
 
+        ivback = findViewById(R.id.btnback);
         igComment = findViewById(R.id.ig_comment);
         rvComments = findViewById(R.id.rvComments);
         adapter = new CommentAdapter();
@@ -68,6 +71,13 @@ public class PostDetailsActivity extends AppCompatActivity {
         //tvUsername.setText(post.getUser());
         //tvDescription.setText(post.getDescription());
 
+        ivback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goFeedActivity();
+            }
+        });
+
         ParseFile image = post.getImage();
         if (image != null) {
             Glide.with(PostDetailsActivity.this).load(image.getUrl()).into(ivImage);
@@ -83,6 +93,13 @@ public class PostDetailsActivity extends AppCompatActivity {
         });
 
         reFreshComment();
+    }
+
+    private void goFeedActivity() {
+        Intent i = new Intent(this, FeedActivity.class);
+        startActivity(i);
+        finish();
+
     }
 
     private void reFreshComment() {
