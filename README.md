@@ -10,7 +10,7 @@ Time spent: **30** hours spent in total
 
 The following **required** functionality is completed:
 
-- [x ] User sees app icon in home screen.
+- [x] User sees app icon in home screen.
 - [ ] User can sign up to create a new account using Parse authentication
 - [ ] User can log in to their account
 - [ ] The current signed in user is persisted across app restarts
