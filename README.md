@@ -24,6 +24,7 @@ The following **stretch** features are implemented:
 
 - [x] Style the login page to look like the real Instagram login page.
 - [x] Style the feed to look like the real Instagram feed.
+- [x] Endless Scrolling
 
 - [x] User should switch between different tabs using  Bottom Navigation View.
   - [x] Feed Tab (to view all posts from all users)
