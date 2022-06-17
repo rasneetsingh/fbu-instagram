@@ -28,6 +28,8 @@ import java.util.List;
 
 public class FeedActivity extends AppCompatActivity {
     private SwipeRefreshLayout swipeLayout;
+    private EndlessRecyclerViewScrollListener scrollListener;
+
 
     private RecyclerView rvPosts;
     protected PostsAdaptar adapter;
@@ -44,6 +46,19 @@ public class FeedActivity extends AppCompatActivity {
 
         rvPosts = findViewById(R.id.rvPosts);
 
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        scrollListener= new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+
+                queryPosts(allPosts.size());
+
+
+
+            }
+        };
+
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
@@ -54,10 +69,10 @@ public class FeedActivity extends AppCompatActivity {
                         goMainActivity();
                         // do something here
 
-                    //case R.id.action_schedules:
+                        //case R.id.action_schedules:
                         // do something here
                         //return true;
-                    //case R.id.action_music:
+                        //case R.id.action_music:
                         // do something here
                         //return true;
                     default: return true;
@@ -99,10 +114,13 @@ public class FeedActivity extends AppCompatActivity {
 
         // set the adapter on the recycler view
         rvPosts.setAdapter(adapter);
+
+        //endless scrolling
+        rvPosts.addOnScrollListener(scrollListener);
         // set the layout manager on the recycler view
-        rvPosts.setLayoutManager(new LinearLayoutManager(this));
+        rvPosts.setLayoutManager(linearLayoutManager);
         // query posts from Parstagram
-        queryPosts();
+        queryPosts(0);
 
     }
 
@@ -114,13 +132,14 @@ public class FeedActivity extends AppCompatActivity {
 
     }
 
-    private void queryPosts() {
+    private void queryPosts(int skip) {
         // specify what type of data we want to query - Post.class
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         // include data referred by user key
         query.include(Post.KEY_USER);
         // limit query to latest 20 items
-        query.setLimit(20);
+        query.setLimit(2);
+        query.setSkip(skip);
         // order posts by creation date (newest first)
         query.addDescendingOrder("createdAt");
         // start an asynchronous call for posts
